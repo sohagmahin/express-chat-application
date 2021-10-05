@@ -22,7 +22,7 @@ const addUserValidators = [
     .trim()
     .custom(async (value) => {
       try {
-        const user = User.findOne({ email: value });
+        const user = await User.findOne({ email: value });
         if (user) {
           throw createError("Email already is use!");
         }
@@ -38,7 +38,7 @@ const addUserValidators = [
     .withMessage("Mobile number must be a valid Bangladeshi mobile number")
     .custom(async (value) => {
       try {
-        const user = User.findOne({ mobile: value });
+        const user = await User.findOne({ mobile: value });
         if (user) {
           throw createError("Mobile already is use!");
         }
@@ -65,7 +65,7 @@ const addUserValidationHandler = function (req, res, next) {
     if (req.files.length > 0) {
       const { filename } = req.files[0];
       unlink(
-        path.join(__dirname, `/../public/uploads/avatars/${filename}`),
+        path.join(__dirname, `../../public/uploads/avatars/${filename}`),
         (err) => {
           if (err) console.log(err);
         }
