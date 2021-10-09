@@ -26,16 +26,22 @@
           </tr>
         </thead>
         <tbody id="users-table">
-          <tr id="">
+          <% users.forEach(function(user){ %>
+          <tr id="<%= user._id %>">
             <td class="name">
-              <img src="./images/user1.png" />
-              <span>User 1</span>
+              <% if(user.avatar){ %>
+              <img src="./uploads/avatars/<%= user.avatar %>" />
+              <% } else { %>
+                <img src="./images/user1.png" />
+                <% } %>
+              <span><%= user.name %></span>
             </td>
-            <td>email@email.com</td>
+            <td><%= user.email %></td>
             <td class="manage">
               <img src="./images/trash.png" alt="Delete" />
             </td>
           </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>
