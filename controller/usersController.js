@@ -63,7 +63,7 @@ async function removeUser(req, res, next) {
     // remove user avatar if exists
     if (user) {
       unlink(
-        path.join(__dirname + `/../../public/uploads/avatars/${user.avatar}`),
+        path.join(__dirname + `../../public/uploads/avatars/${user.avatar}`),
         (err) => {
           if (err) console.log(err);
         }
