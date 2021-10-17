@@ -10,6 +10,7 @@ function getLogin(req, res, next) {
 
 async function login(req, res, next) {
   try {
+    // find user who has this email/username
     const user = await User.findOne({
       $or: [{ email: req.body.username }, { mobile: req.body.username }],
     });
@@ -64,4 +65,7 @@ async function login(req, res, next) {
     });
   }
 }
-module.exports = { getLogin };
+module.exports = {
+  getLogin,
+  login,
+};
